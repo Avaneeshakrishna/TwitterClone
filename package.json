@@ -4,12 +4,12 @@
   "description": "",
   "main": "/backend/server.js",
   "scripts": {
-    "dev":"nodemon backend/server.js",
-    "start":"node backend/server.js"
+    "dev": "nodemon backend/server.js",
+    "start": "node backend/server.js"
   },
   "keywords": [],
   "author": "",
-  "types": "module",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
