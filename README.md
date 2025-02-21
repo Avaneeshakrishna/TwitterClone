@@ -63,12 +63,12 @@ Before running the project, ensure you have the following installed:
     ```
     openssl rand -base64 32
     ```
-  Copy the generated key and add it to your .env file: (It may look like this)\
-  &nbsp;JWT_SECRET=your_generated_secret\
-  &nbsp;MONGO_URI=your_mongodb_connection_string\
-  &nbsp;CLOUDINARY_CLOUD_NAME=your_cloudinary_name\
-  &nbsp;CLOUDINARY_API_KEY=your_api_key\
-  &nbsp;CLOUDINARY_API_SECRET=your_api_secret\
+  &nbsp;&nbsp;Copy the generated key and add it to your .env file: (It may look like this)\
+  &nbsp;&nbsp;JWT_SECRET=your_generated_secret\
+  &nbsp;&nbsp;MONGO_URI=your_mongodb_connection_string\
+  &nbsp;&nbsp;CLOUDINARY_CLOUD_NAME=your_cloudinary_name\
+  &nbsp;&nbsp;CLOUDINARY_API_KEY=your_api_key\
+  &nbsp;&nbsp;CLOUDINARY_API_SECRET=your_api_secret\
 
 3. Frontend Setup (React & Vite)
    ```
