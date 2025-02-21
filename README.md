@@ -5,7 +5,7 @@ A full-stack Twitter Clone built using React.js, Node.js, Express.js, and MongoD
 ## 📌 Project Description: Twitter Clone (MERN Stack)
 
 This project is a fully functional Twitter Clone built using the MERN Stack (MongoDB, Express.js, React.js, Node.js). It replicates key features of Twitter, including user authentication, post creation, likes, comments, profile management, and real-time notifications.
-The project was developed as a learning and side project to enhance my full-stack development skills. I followed this [YouTube tutorial](https://www.youtube.com/watch?v=4GUVz2psWUg) as a foundation but introduced several optimizations, including improved API performance, state management with React Query, and UI enhancements with TailwindCSS and DaisyUI.
+The project was developed as a learning and side project to enhance my full-stack development skills. I followed this [YouTube](https://www.youtube.com/watch?v=4GUVz2psWUg) as a foundation but introduced several optimizations, including improved API performance, state management with React Query, and UI enhancements with TailwindCSS and DaisyUI.
 It serves as a great reference for anyone looking to understand modern web development with React, Node.js, MongoDB, and cloud deployment.
 
 ## 🚀 Getting Started
