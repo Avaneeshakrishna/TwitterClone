@@ -54,7 +54,7 @@ Before running the project, ensure you have the following installed:
    npm i -D nodemon                       # Install nodemon (for development)
    npm run dev                            # Start the backend server
    ```
-  MongoDB Setup (Local or Atlas)
+  &nbsp MongoDB Setup (Local or Atlas)
    - If using MongoDB Atlas, update MONGO_URI in your .env file.
    - If using local MongoDB, ensure your MongoDB service is running.
 
