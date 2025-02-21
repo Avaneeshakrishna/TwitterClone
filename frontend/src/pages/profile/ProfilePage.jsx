@@ -175,7 +175,7 @@ const ProfilePage = () => {
 											<>
 												<FaLink className='w-3 h-3 text-slate-500' />
 												<a
-													href={user?.link.startsWith("http") ? user?.link : `https://${user?.link}`}
+													href='https://youtube.com/@asaprogrammer_'
 													target='_blank'
 													rel='noreferrer'
 													className='text-sm text-blue-500 hover:underline'

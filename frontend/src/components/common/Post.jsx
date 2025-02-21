@@ -44,40 +44,80 @@ const Post = ({ post }) => {
 		},
 	});
 
+	// const { mutate: likePost, isPending: isLiking } = useMutation({
+	// 	mutationFn: async () => {
+	// 		try {
+	// 			const res = await fetch(`/api/posts/like/${post._id}`, {
+	// 				method: "POST",
+	// 			});
+	// 			const data = await res.json();
+	// 			if (!res.ok) {
+	// 				throw new Error(data.error || "Something went wrong");
+	// 			}
+	// 			return data;
+	// 		} catch (error) {
+	// 			throw new Error(error);
+	// 		}
+	// 	},
+	// 	onSuccess: (updatedLikes) => {
+	// 		// this is not the best UX, bc it will refetch all posts
+	// 		// queryClient.invalidateQueries({ queryKey: ["posts"] });
+
+	// 		// instead, update the cache directly for that post
+	// 		queryClient.setQueryData(["posts"], (oldData) => {
+	// 			return oldData.map((p) => {
+	// 				if (p._id === post._id) {
+	// 					return { ...p, likes: updatedLikes };
+	// 				}
+	// 				return p;
+	// 			});
+	// 		});
+	// 	},
+	// 	onError: (error) => {
+	// 		toast.error(error.message);
+	// 	},
+	// });
+	
 	const { mutate: likePost, isPending: isLiking } = useMutation({
 		mutationFn: async () => {
 			try {
 				const res = await fetch(`/api/posts/like/${post._id}`, {
 					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${authUser.token}`,
+					},
 				});
 				const data = await res.json();
-				if (!res.ok) {
-					throw new Error(data.error || "Something went wrong");
-				}
+				if (!res.ok) throw new Error(data.error || "Something went wrong");
 				return data;
 			} catch (error) {
 				throw new Error(error);
 			}
 		},
 		onSuccess: (updatedLikes) => {
-			// this is not the best UX, bc it will refetch all posts
-			// queryClient.invalidateQueries({ queryKey: ["posts"] });
-
-			// instead, update the cache directly for that post
 			queryClient.setQueryData(["posts"], (oldData) => {
-				return oldData.map((p) => {
-					if (p._id === post._id) {
-						return { ...p, likes: updatedLikes };
+				if (!oldData) return [];
+	
+				return oldData.map((oldPost) => {
+					if (oldPost._id === post._id) {
+						return {
+							...oldPost,
+							likes: updatedLikes.likes, // ✅ Ensure likes update with the server response
+						};
 					}
-					return p;
+					return oldPost;
 				});
 			});
+	
+			queryClient.invalidateQueries(["posts"]); // ✅ Force UI to refresh instantly
 		},
 		onError: (error) => {
 			toast.error(error.message);
 		},
 	});
-
+	
+	
 	const { mutate: commentPost, isPending: isCommenting } = useMutation({
 		mutationFn: async () => {
 			try {
@@ -118,10 +158,33 @@ const Post = ({ post }) => {
 		commentPost();
 	};
 
+	// const handleLikePost = () => {
+	// 	if (isLiking) return;
+	// 	likePost();
+	// };
 	const handleLikePost = () => {
-		if (isLiking) return;
-		likePost();
+		if (isLiking) return; // Prevent multiple rapid clicks
+	
+		queryClient.setQueryData(["posts"], (oldData) => {
+			if (!oldData) return [];
+	
+			return oldData.map((oldPost) => {
+				if (oldPost._id === post._id) {
+					return {
+						...oldPost,
+						likes: isLiked
+							? oldPost.likes.filter((id) => id !== authUser._id) // Unlike
+							: [...oldPost.likes, authUser._id], // Like
+					};
+				}
+				return oldPost;
+			});
+		});
+	
+		likePost(); // ✅ Trigger mutation
 	};
+	
+	
 
 	return (
 		<>
@@ -226,7 +289,7 @@ const Post = ({ post }) => {
 								<BiRepost className='w-6 h-6  text-slate-500 group-hover:text-green-500' />
 								<span className='text-sm text-slate-500 group-hover:text-green-500'>0</span>
 							</div>
-							<div className='flex gap-1 items-center group cursor-pointer' onClick={handleLikePost}>
+							{/* <div className='flex gap-1 items-center group cursor-pointer' onClick={handleLikePost}>
 								{isLiking && <LoadingSpinner size='sm' />}
 								{!isLiked && !isLiking && (
 									<FaRegHeart className='w-4 h-4 cursor-pointer text-slate-500 group-hover:text-pink-500' />
@@ -242,6 +305,25 @@ const Post = ({ post }) => {
 								>
 									{post.likes.length}
 								</span>
+							</div> */}
+							<div className='flex gap-1 items-center group cursor-pointer' onClick={handleLikePost}>
+    						{isLiking && <LoadingSpinner size='sm' />} {/* ✅ Show spinner when liking */}
+
+    						{!isLiked && !isLiking && (
+        						<FaRegHeart className='w-4 h-4 cursor-pointer text-slate-500 group-hover:text-pink-500' />
+    						)}
+
+    						{isLiked && !isLiking && (
+        					<FaRegHeart className='w-4 h-4 cursor-pointer text-pink-500 ' />
+    						)}
+
+							<span
+								className={`text-sm group-hover:text-pink-500 ${
+									isLiked ? "text-pink-500" : "text-slate-500"
+								}`}
+							>
+								{post.likes?.length || 0} {/* ✅ Ensure it doesn't crash on undefined */}
+							</span>
 							</div>
 						</div>
 						<div className='flex w-1/3 justify-end gap-2 items-center'>
