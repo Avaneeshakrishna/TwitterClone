@@ -41,10 +41,12 @@ Before running the project, ensure you have the following installed:
 
 ### ⚡ Installation & Setup
 1. Clone the Repository
-   ```git clone https://github.com/Avaneeshakrishna/TwitterClone.git
-cd TwitterClone```
+   ```
+   git clone https://github.com/Avaneeshakrishna/TwitterClone.git
+   cd TwitterClone
+   ```
 
-2. Backend Setup (Node.js & Express)
+3. Backend Setup (Node.js & Express)
    ```cd backend
 
 # Initialize Node.js project (if not already done)
