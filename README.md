@@ -63,14 +63,27 @@ Before running the project, ensure you have the following installed:
     ```
     openssl rand -base64 32
     ```
-Copy the generated key and add it to your .env file: (It may look like this)\
-JWT_SECRET=your_generated_secret\
-MONGO_URI=your_mongodb_connection_string\
-CLOUDINARY_CLOUD_NAME=your_cloudinary_name\
-CLOUDINARY_API_KEY=your_api_key\
-CLOUDINARY_API_SECRET=your_api_secret\
+  Copy the generated key and add it to your .env file: (It may look like this)\
+  JWT_SECRET=your_generated_secret\
+  MONGO_URI=your_mongodb_connection_string\
+  CLOUDINARY_CLOUD_NAME=your_cloudinary_name\
+  CLOUDINARY_API_KEY=your_api_key\
+  CLOUDINARY_API_SECRET=your_api_secret\
 
 3. Frontend Setup (React & Vite)
+   ```
+   cd frontend
+   npm create vite@latest .       # Initialize Vite for React
+   npm install                    # Install dependencies
+   npm install -D tailwindcss postcss autoprefixer    # Install TailwindCSS
+   npx tailwindcss init -p
+   npm install daisyui            # Install DaisyUI
+   npm install react-router-dom react-icons   # Install React Router & Icons
+   npm install @tanstack/react-query   # Install TanStack Query (React Query for API optimization)
+   npm run dev                    # Start the frontend development server
+
+
+
 5. 
 
 ### Executing program
