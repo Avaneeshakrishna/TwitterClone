@@ -68,7 +68,7 @@ Before running the project, ensure you have the following installed:
   &nbsp;&nbsp;MONGO_URI=your_mongodb_connection_string\
   &nbsp;&nbsp;CLOUDINARY_CLOUD_NAME=your_cloudinary_name\
   &nbsp;&nbsp;CLOUDINARY_API_KEY=your_api_key\
-  &nbsp;&nbsp;CLOUDINARY_API_SECRET=your_api_secret\
+  &nbsp;&nbsp;CLOUDINARY_API_SECRET=your_api_secret
 
 3. Frontend Setup (React & Vite)
    ```
@@ -84,6 +84,6 @@ Before running the project, ensure you have the following installed:
    ```
 
 4. Deployment
-  - Backend: Deployed on Render\
-  - Frontend: Deployed using Vite + React\
-  - Database: Hosted on MongoDB Atlas\
+  - Backend: Deployed on Render
+  - Frontend: Deployed using Vite + React
+  - Database: Hosted on MongoDB Atlas
