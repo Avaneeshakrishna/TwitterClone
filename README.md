@@ -83,7 +83,7 @@ Before running the project, ensure you have the following installed:
    npm run dev                    # Start the frontend development server
    ```
 
-5. Deployment
+4. Deployment
   - Backend: Deployed on Render\
   - Frontend: Deployed using Vite + React\
   - Database: Hosted on MongoDB Atlas\
