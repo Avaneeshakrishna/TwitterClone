@@ -47,19 +47,21 @@ Before running the project, ensure you have the following installed:
    ```
 
 3. Backend Setup (Node.js & Express)
-   ```cd backend
+   ```
+   cd backend
 
-# Initialize Node.js project (if not already done)
-npm init -y
+  #Initialize Node.js project (if not already done)
+  npm init -y
 
-# Install dependencies
-npm install express mongoose jsonwebtoken bcryptjs dotenv cors cookie-parser cloudinary
+  #Install dependencies
+  npm install express mongoose jsonwebtoken bcryptjs dotenv cors cookie-parser cloudinary
 
-# Install nodemon (for development)
-npm i -D nodemon
+  # Install nodemon (for development)
+  npm i -D nodemon
 
-# Start the backend server
-npm run dev ```
+  # Start the backend server
+  npm run dev 
+  ```
 
 4. 
 5. 
