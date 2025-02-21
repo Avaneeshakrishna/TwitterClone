@@ -54,12 +54,12 @@ Before running the project, ensure you have the following installed:
    npm i -D nodemon                       # Install nodemon (for development)
    npm run dev                            # Start the backend server
    ```
-  &nbsp; MongoDB Setup (Local or Atlas)
-   - If using MongoDB Atlas, update MONGO_URI in your .env file.
-   - If using local MongoDB, ensure your MongoDB service is running.
+  &nbsp;&nbsp; MongoDB Setup (Local or Atlas)
+  &nbsp; - If using MongoDB Atlas, update MONGO_URI in your .env file.
+  &nbsp; - If using local MongoDB, ensure your MongoDB service is running.
 
-  Create a JWT Secret Key
-  - Run the following command in Git Bash:
+ &nbsp;&nbsp; Create a JWT Secret Key
+  &nbsp;- Run the following command in Git Bash:
     ```
     openssl rand -base64 32
     ```
